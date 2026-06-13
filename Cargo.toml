@@ -1,0 +1,35 @@
+[package]
+name        = "titandaw"
+version     = "2.0.0"
+edition     = "2021"
+authors     = ["Julius Cameron Hill <titan@titanuai.com>"]
+description = "TitanDAW — AI-native professional multitrack DAW  JCH-2026-011"
+
+[[bin]]
+name = "titandaw"
+path = "src/main.rs"
+
+[dependencies]
+gtk4             = { version = "0.9", features = ["v4_14"] }
+cairo-rs         = { version = "0.20" }
+glib             = { version = "0.20" }
+gio              = { version = "0.20" }
+anyhow           = "1"
+serde            = { version = "1", features = ["derive"] }
+serde_json       = "1"
+log              = "0.4"
+env_logger       = "0.11"
+libc             = "0.2"
+reqwest          = { version = "0.12", features = ["blocking", "json"] }
+dirs             = "5"
+midir            = "0.10"
+crossbeam-channel = "0.5"
+
+[build-dependencies]
+cc = "1"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+codegen-units = 1
+strip         = true
